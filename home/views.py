@@ -257,10 +257,9 @@ def person(request):
 		return Response(serializer.errors)
 
 	else:
-
-		data = request.data
+		
 		try:
-		    id_value = data['id']
+		    id = request.GET.get('id')
 		    obj = Person.objects.get(id=id_value)
 		    obj.delete()
 		    return Response({'message': 'Person Deleted'})
